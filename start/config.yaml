@@ -1,0 +1,70 @@
+# config.yaml
+
+mavlink_router:
+  port: '/dev/ttyUSB0'      # Serial port to connect to Pixhawk
+  baudrate: 57600           # Baud rate for serial communication
+
+mission_planner:
+  altitude: 10              # Takeoff altitude in meters
+  waypoints:
+    - seq: 0
+      frame: MAV_FRAME_GLOBAL_RELATIVE_ALT
+      command: MAV_CMD_NAV_TAKEOFF
+      current: 1
+      autocontinue: 1
+      param1: 0
+      param2: 0
+      param3: 0
+      param4: 0
+      x: 0                     # Relative to home position
+      y: 0
+      z: 10
+    - seq: 1
+      frame: MAV_FRAME_GLOBAL_RELATIVE_ALT
+      command: MAV_CMD_NAV_WAYPOINT
+      current: 0
+      autocontinue: 1
+      param1: 0                # Hold time in seconds
+      param2: 0                # Acceptance radius in meters
+      param3: 0                # Pass through waypoint
+      param4: 0                # Desired yaw angle
+      x: 47.397742             # Target latitude
+      y: 8.545594              # Target longitude
+      z: 10                    # Target altitude
+
+precision_landing:
+  mode: 'GUIDED'
+  speed_factor: 0.5                  # Flight mode during precision landing
+  landing_condition:
+    # Define parameters for landing condition
+    # For example, distance to landing pad, altitude threshold, etc.
+    altitude_threshold: 1.0   # Meters above ground
+    target_detected: true     # Flag to simulate detection
+    
+logging:
+  version: 1
+  disable_existing_loggers: False
+  formatters:
+    standard:
+      format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+      datefmt: '%Y-%m-%d %H:%M:%S'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      level: INFO
+      formatter: standard
+      stream: ext://sys.stdout
+    file:
+      class: logging.FileHandler
+      level: DEBUG
+      formatter: standard
+      filename: "start/drone.log"
+  loggers:
+    DroneLogger:
+      level: DEBUG
+      handlers: [console, file]
+      propagate: no
+
+safety:
+  battery_threshold: 20
+
