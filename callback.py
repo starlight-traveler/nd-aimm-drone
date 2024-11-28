@@ -17,10 +17,22 @@ class MavlinkCallBack:
         # Store specific data
         self.system_status = None
         self.attitude = None
+   
+    def get_message(self, msg_type):
+        with self.lock:
+            return self.messages.get(msg_type, None)
 
+    def get_all_messages(self):
+        with self.lock:
+            return dict(self.messages)
+             
     def handle_message(self, msg):
         with self.lock:
+            # Store the latest message of each type
             self.messages[msg.get_type()] = msg
+            # Update landed status if it's a relevant message
+            if msg.get_type() == 'GLOBAL_POSITION_INT':
+                self.drone_commands.update_landed_status(msg)
 
     def handle_heartbeat(self, msg):
         with self.lock:
