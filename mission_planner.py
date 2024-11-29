@@ -1,4 +1,3 @@
-# mission_planner.py
 from pymavlink import mavutil
 import time
 

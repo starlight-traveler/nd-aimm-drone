@@ -31,6 +31,19 @@ mission_planner:
       x: 47.397742             # Target latitude
       y: 8.545594              # Target longitude
       z: 10                    # Target altitude
+    - seq: 2
+      frame: MAV_FRAME_GLOBAL_RELATIVE_ALT
+      command: MAV_CMD_NAV_WAYPOINT
+      current: 0
+      autocontinue: 1
+      param1: 0                # Hold time in seconds
+      param2: 0                # Acceptance radius in meters
+      param3: 0                # Pass through waypoint
+      param4: 0                # Desired yaw angle
+      x: 47.397800             # Target latitude for third waypoint
+      y: 8.545650              # Target longitude for third waypoint
+      z: 10                    # Target altitude for third waypoint
+
 
 precision_landing:
   mode: 'GUIDED'
@@ -51,7 +64,7 @@ logging:
   handlers:
     console:
       class: logging.StreamHandler
-      level: INFO
+      level: DEBUG
       formatter: standard
       stream: ext://sys.stdout
     file:

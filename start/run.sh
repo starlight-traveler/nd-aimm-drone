@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ======================================================================
-# Script Name: run_drone.sh
+# Script Name: run.sh
 # Description: Navigates to the parent directory and runs main.py as a
 #              background process, logging output to start/drone.log.
 #              The process continues running after SSH logout, and

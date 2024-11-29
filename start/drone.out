@@ -1,0 +1,34 @@
+nohup: ignoring input
+Configuration loaded from start/config.yaml
+Log directory already exists: /local/ndaimm/nd-aimm/nd-aimm-drone/start
+2024-11-28 16:10:01 - DroneLogger - INFO - Logger initialized.
+2024-11-28 16:10:01 - DroneLogger - DEBUG - EventBus initialized.
+2024-11-28 16:10:01 - DroneLogger - ERROR - Failed to start MAVLink connection: [Errno 2] could not open port /dev/ttyUSB0: [Errno 2] No such file or directory: '/dev/ttyUSB0'
+2024-11-28 16:10:01 - DroneLogger - DEBUG - MAVLink router attempt on /dev/ttyUSB0 at 57600 baud.
+2024-11-28 16:10:01 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:02 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:03 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:04 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:05 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:06 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:07 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:08 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:09 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:10 - DroneLogger - DEBUG - Waiting for MAVLink connection...
+2024-11-28 16:10:11 - DroneLogger - ERROR - MAVLink connection could not be established within timeout.
+2024-11-28 16:10:11 - DroneLogger - ERROR - An unexpected error occurred: Failed to establish MAVLink connection.
+Traceback (most recent call last):
+  File "/local/ndaimm/nd-aimm/nd-aimm-drone/main.py", line 208, in run
+    self.initialize_components()
+  File "/local/ndaimm/nd-aimm/nd-aimm-drone/main.py", line 90, in initialize_components
+    raise ConnectionError("Failed to establish MAVLink connection.")
+ConnectionError: Failed to establish MAVLink connection.
+2024-11-28 16:10:11 - DroneLogger - INFO - Commencing cleanup.
+Traceback (most recent call last):
+  File "/local/ndaimm/nd-aimm/nd-aimm-drone/main.py", line 221, in <module>
+    app.run()
+  File "/local/ndaimm/nd-aimm/nd-aimm-drone/main.py", line 216, in run
+    self.cleanup()
+  File "/local/ndaimm/nd-aimm/nd-aimm-drone/main.py", line 168, in cleanup
+    if self.precision_landing.is_running():
+AttributeError: 'NoneType' object has no attribute 'is_running'
